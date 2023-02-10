@@ -32,9 +32,9 @@ def purchase_item(request, item_id):
 def order(request, item_id):
     discount = Discount.objects.get(item_id=item_id)
     tax = Tax.objects.get(item_id=item_id)
-    Order.objects.create(item_id=item_id, discount=discount, tax=tax,
+    order = Order.objects.create(item_id=item_id, discount=discount, tax=tax,
                          number_order=Order.objects.all().count() + 1, quantity=1)
-    return HttpResponse('Ваш заказ создан, товар добавлен к заказу')
+    return HttpResponse(f'Ваш заказ создан, номер заказа {order.number_order}')
 
 
 def add_item_to_order(request, number_order, item_id):
