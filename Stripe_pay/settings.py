@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+
 import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,6 +24,7 @@ env = environ.Env(
     DEBUG=bool,
     STRIPE_PUBLIC_KEY=str,
     STRIPE_SECRET_KEY=str,
+    DOMAIN_NAME=str,
 )
 
 # Quick-start development settings - unsuitable for production
@@ -33,6 +35,8 @@ SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
+
+DOMAIN_NAME = env('DOMAIN_NAME')
 
 ALLOWED_HOSTS = ['*']
 

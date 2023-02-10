@@ -16,6 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from item.views import (add_item_to_order, create_stripe_session, order,
+                        order_buy, purchase_item)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('buy/<int:item_id>', create_stripe_session, name='buy'),
+    path('item/<int:item_id>', purchase_item, name='item'),
+    path('order/<int:item_id>', order, name='order'),
+    path('order-add/<int:number_order>/<int:item_id>', add_item_to_order, name='item_add'),
+    path('order-buy/<int:number_order>', order_buy, name='order_buy'),
 ]

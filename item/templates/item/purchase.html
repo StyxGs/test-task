@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+<h1>{{ name }}</h1>
+<p>Описание: {{ description }}</p>
+<p>{{ price }} рублей</p>
+<form action="{% url 'item' item_id %}" method="POST">
+    {% csrf_token %}
+    <button id="buy-button">Оплатить заказ</button>
+</form>
+</body>
+</html>

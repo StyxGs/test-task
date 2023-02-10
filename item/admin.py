@@ -1,11 +1,11 @@
 from django.contrib import admin
 
-from item.models import Items, Discount, Tax, Order
+from item.models import Discount, Items, Order, Tax
 
 
 class DiscountsAdmin(admin.TabularInline):
     model = Discount
-    fields = ('rebate',)
+    fields = ('discount',)
     extra = 0
 
 
@@ -25,4 +25,4 @@ class ItemsAdmin(admin.ModelAdmin):
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('__str__',)
-    readonly_fields = ('time_created',)
+    readonly_fields = ('discount', 'tax')
